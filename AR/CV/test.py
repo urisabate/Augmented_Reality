@@ -80,7 +80,65 @@ def ex10():
     print("EX_10")
     arr = np.ones(shape=(10, 10))
     arr[1:1, 8:8] = 0
-
+    #not working and don't know why :'(
     print(arr)
 
 ex10()
+
+def ex11():
+    print("EX_11")
+    arr = np.arange(1,6)
+
+    for i in range(1,5):        
+        arr2 = np.arange(1,6)
+        arr = np.vstack((arr, arr2))
+    else:
+        print(arr)
+
+ex11()
+
+def ex12():
+    print("EX_12")
+    arr = np.random.randint(-100, 100, 9)
+    arr = arr.reshape((3,3))
+    arr = np.float64(arr)
+
+    print(arr)
+
+ex12()
+
+def ex13():
+    print("EX_13")
+    arr = np.random.randint(-100, 100, 25)
+    arr = arr.reshape((5 ,5)) 
+    print(arr)
+    av = arr.mean()
+    print(av)
+    arr = arr - av
+
+    print(arr)
+
+ex13()
+
+def ex14():
+    print("EX_14")
+    arr = np.random.randint(-100, 100, 25)
+    arr = arr.reshape((5 ,5)) 
+    arr = np.float64(arr)
+
+    for i in range(0,5):
+        av = arr[i, :].mean()
+        arr[i, :] = np.subtract(arr[i, :], av)
+    else: 
+        print(arr)
+
+ex14()
+
+def ex15():
+    print("EX_14")
+    arr = np.random.randint(-100, 100, 25)
+    arr = arr.reshape((5 ,5)) 
+    arr = np.float64(arr)
+
+    
+
