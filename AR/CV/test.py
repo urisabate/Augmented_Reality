@@ -59,7 +59,7 @@ ex7()
 
 def ex8():
     print("EX_8")
-    arr = np.random.random((3, 3))
+    arr = np.random.random_sample((3, 3))
     print(arr)
 
 ex8()
@@ -76,8 +76,10 @@ ex9()
 
 def ex10():
     print("EX_10")
-    arr = np.ones(shape=(10, 10))
-    arr[1:9, 1:9] = 0
+    #arr = np.ones(shape=(10, 10))
+    #arr[1:9, 1:9] = 0 
+
+    arr = np.zeros(shape=(10, 10)) 
 
     print(arr)
 
@@ -90,8 +92,8 @@ def ex11():
     for i in range(1, 5):        
         arr2 = np.arange(1, 6)
         arr = np.vstack((arr, arr2))
-    else:
-        print(arr)
+    
+    print(arr)
 
 ex11()
 
@@ -125,8 +127,8 @@ def ex14():
     for i in range(0, 5):
         av = arr[i, :].mean()
         arr[i, :] = np.subtract(arr[i, :], av)
-    else: 
-        print(arr)
+    
+    print(arr)
 
 ex14()
 
@@ -149,9 +151,9 @@ def ex16():
         for j in range(0, 3):
             if arr[i, j] > 5:
                 count += 1
-    else:
-        print(arr)
-        print(count)
+    
+    print(arr)
+    print(count)
 
 ex16()
 
