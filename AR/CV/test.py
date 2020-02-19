@@ -1,4 +1,15 @@
 import numpy as np
+import cv2
+
+def tutorial():
+    print("This is just a tutorial...")
+    list = [0, 1, 2, 3]
+    arr = np.array(list).reshape((2, 2))
+    arr2 = arr.copy().flatten()
+    print(arr2)
+    print(arr)
+
+tutorial()
 
 def ex1():
     print("EX_1")
@@ -76,10 +87,8 @@ ex9()
 
 def ex10():
     print("EX_10")
-    #arr = np.ones(shape=(10, 10))
-    #arr[1:9, 1:9] = 0 
-
-    arr = np.zeros(shape=(10, 10)) 
+    arr = np.ones(shape=(10, 10))
+    arr[1:9, 1:9] = 0
 
     print(arr)
 
@@ -87,12 +96,18 @@ ex10()
 
 def ex11():
     print("EX_11")
+
+    rows = 1
+    stacking = True
     arr = np.arange(1, 6)
 
-    for i in range(1, 5):        
+    while stacking:
         arr2 = np.arange(1, 6)
         arr = np.vstack((arr, arr2))
-    
+        rows += 1
+        if rows == 5:
+            stacking = False
+
     print(arr)
 
 ex11()
@@ -110,7 +125,7 @@ ex12()
 def ex13():
     print("EX_13")
     arr = np.random.randint(-100, 100, 25)
-    arr = arr.reshape((5 ,5)) 
+    arr = arr.reshape((5, 5))
     av = arr.mean()
     arr = arr - av
 
@@ -121,13 +136,13 @@ ex13()
 def ex14():
     print("EX_14")
     arr = np.random.randint(-100, 100, 25)
-    arr = arr.reshape((5 ,5)) 
+    arr = arr.reshape((5, 5))
     arr = np.float64(arr)
 
     for i in range(0, 5):
         av = arr[i, :].mean()
         arr[i, :] = np.subtract(arr[i, :], av)
-    
+
     print(arr)
 
 ex14()
@@ -140,19 +155,16 @@ def ex15():
     print(arr)
     print(arr.flat[np.abs(arr - value).argmin()])
 
-ex15() 
+ex15()
 
 def ex16():
     print("EX_16")
     arr = np.random.randint(0, 10, 9)
     arr = arr.reshape((3, 3))
-    count = 0
-    for i in range(0, 3):
-        for j in range(0, 3):
-            if arr[i, j] > 5:
-                count += 1
-    
+   
     print(arr)
+    print(arr[arr > 5])
+    count = np.size(arr[arr > 5])
     print(count)
 
 ex16()
