@@ -78,7 +78,7 @@ def ex10():
     print("EX_10")
     arr = np.ones(shape=(10, 10))
     arr[1:9, 1:9] = 0
-    #not working and don't know why :'(
+
     print(arr)
 
 ex10()
@@ -143,7 +143,7 @@ ex15()
 def ex16():
     print("EX_16")
     arr = np.random.randint(0, 10, 9)
-    arr = arr.reshape((3 ,3))
+    arr = arr.reshape((3, 3))
     count = 0
     for i in range(0, 3):
         for j in range(0, 3):
@@ -157,5 +157,3 @@ ex16()
 
 #ex17 to ex23 about images see pdf:
 #"Intro to Image Processing in Virtual Campus"
-#but first... let me take a selfie
-#and fix all the problems from previous exercises
