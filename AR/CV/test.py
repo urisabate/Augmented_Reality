@@ -1,34 +1,6 @@
 import numpy as np
 import cv2
 
-def tutorial():
-    print("This is just a tutorial...")
-    list = [0, 1, 2, 3]
-    arr = np.array(list).reshape((2, 2))
-    arr2 = arr.copy().flatten()
-    print(arr2)
-    print(arr)
-
-tutorial()
-
-#def imgTutorial():
-#    print("Trying some shit")
-#    img = np.zeros((10, 10, 1),np.uint8())
-#    print(img)
-    #diff = np.uint8(255/64)
-#
-    #for i in range(0, 64):
-    #    for j in range(0, 64):
-    #        img[i, j] += diff
-    #        if img[i, j] > 255:
-    #            img[i, j] = 255
-
-   # cv2.imshow('image',img)
-   # cv2.waitKey(0)
-   # cv2.destroyAllWindows()
-
-#imgTutorial()
-
 def ex1():
     print("EX_1")
     arr = np.zeros(shape=(1, 10))
@@ -142,19 +114,19 @@ ex12()
 
 def ex13():
     print("EX_13")
-    arr = np.random.randint(-100, 100, 25)
-    arr = arr.reshape((5, 5))
+    arr = np.random.randint(-100, 100, (5, 5))
+    print(arr)
     av = arr.mean()
     arr = arr - av
 
+    print(av)
     print(arr)
 
 ex13()
 
 def ex14():
     print("EX_14")
-    arr = np.random.randint(-100, 100, 25)
-    arr = arr.reshape((5, 5))
+    arr = np.random.randint(-100, 100, (5, 5))
     arr = np.float64(arr)
 
     for i in range(0, 5):
@@ -179,9 +151,6 @@ def ex16():
     print("EX_16")
     arr = np.random.randint(0, 10, 9)
     arr = arr.reshape((3, 3))
-   
-    print(arr)
-    print(arr[arr > 5])
     count = np.size(arr[arr > 5])
     print(count)
 
@@ -189,21 +158,36 @@ ex16()
 
 #ex17 to ex23 about images see pdf:
 #"Intro to Image Processing in Virtual Campus"
-#def ex21():
-#    print("EX_21")
-#    img = cv2.imread('images\sonic.jpg', 1)
-#    size = np.size(img)
-#
-#    for i in range(1, size):
-#        flag = np.random.randint(-1, 2)
-#        if flag == -1:
-#            img[i, :] = np.uint8(255/2)
-#        else:
-#            continue
-#
-#    cv2.imshow('BlackSonic', img)
-#
-#    cv2.waitKey(0)
-#    cv2.destroyAllWindows()
-#
-#ex21()
+
+def ex17():
+    print("EX_17")
+    img = np.zeros((64, 64))
+    grad = np.arange(0.0, 1.0, 1.0/64.0)
+    img = img + grad
+
+    cv2.imshow("image17", img)
+    cv2.waitKey(0)
+
+ex17()
+
+def ex18():
+    print("EX_18")
+    img = np.zeros((64, 64))
+    grad = np.arange(0.0, 1.0, 1.0/64.0)
+    grad = grad.reshape((64, 1))
+    img = img + grad
+
+    cv2.imshow("image18", img)
+    cv2.waitKey(0)
+
+ex18()
+
+def ex19():
+    print("EX_19")
+    img = 255 * np.ones((64, 64, 3), np.uint8())
+    img[:, :, 0] = 0.0
+
+    cv2.imshow("yellow", img)
+    cv2.waitKey(0)
+
+ex19()
