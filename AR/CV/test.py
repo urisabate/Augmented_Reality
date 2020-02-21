@@ -11,6 +11,24 @@ def tutorial():
 
 tutorial()
 
+#def imgTutorial():
+#    print("Trying some shit")
+#    img = np.zeros((10, 10, 1),np.uint8())
+#    print(img)
+    #diff = np.uint8(255/64)
+#
+    #for i in range(0, 64):
+    #    for j in range(0, 64):
+    #        img[i, j] += diff
+    #        if img[i, j] > 255:
+    #            img[i, j] = 255
+
+   # cv2.imshow('image',img)
+   # cv2.waitKey(0)
+   # cv2.destroyAllWindows()
+
+#imgTutorial()
+
 def ex1():
     print("EX_1")
     arr = np.zeros(shape=(1, 10))
@@ -171,3 +189,21 @@ ex16()
 
 #ex17 to ex23 about images see pdf:
 #"Intro to Image Processing in Virtual Campus"
+#def ex21():
+#    print("EX_21")
+#    img = cv2.imread('images\sonic.jpg', 1)
+#    size = np.size(img)
+#
+#    for i in range(1, size):
+#        flag = np.random.randint(-1, 2)
+#        if flag == -1:
+#            img[i, :] = np.uint8(255/2)
+#        else:
+#            continue
+#
+#    cv2.imshow('BlackSonic', img)
+#
+#    cv2.waitKey(0)
+#    cv2.destroyAllWindows()
+#
+#ex21()
