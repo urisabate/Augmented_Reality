@@ -165,7 +165,6 @@ def ex17():
 
     print(img)
     cv2.imshow("image17", img)
-    cv2.waitKey(0)
 
 ex17()
 
@@ -177,7 +176,6 @@ def ex18():
     img = img + grad
 
     cv2.imshow("image18", img)
-    cv2.waitKey(0)
 
 ex18()
 
@@ -187,7 +185,6 @@ def ex19():
     img[:, :, 0] = 0.0
 
     cv2.imshow("yellow", img)
-    cv2.waitKey(0)
 
 ex19()
 
@@ -198,7 +195,6 @@ def ex20():
     img[32:, 32:, 2] = 0.0
 
     cv2.imshow("square", img)
-    cv2.waitKey(0)
 
 ex20()
 
@@ -208,7 +204,6 @@ def ex21():
     img[::2, :, :] = 255/2
 
     cv2.imshow("horScanSonic", img)
-    cv2.waitKey(0)
 
 ex21()
 
@@ -218,31 +213,48 @@ def ex22():
     img[:, ::2, :] = 255/2
 
     cv2.imshow("verScanSonic", img)
-    cv2.waitKey(0)
 
 ex22()
 
 def ex23():
     print("EX_23")
     img = cv2.imread("images/sonic.jpg", 1)
-    cv2.imshow("test", img)
-    cv2.waitKey(0)
 
     img2 = np.float64(img)
     cv2.imshow("float", img2)
-    cv2.waitKey(0)
 
     cv2.normalize(img2, img)
     cv2.imshow("normalized", img)
-    cv2.waitKey(0)
-    
-    mask = -255/2 * np.ones((276, 1, 3)) 
-    img = img + mask
 
-    if img.any() < 0.0: 
-        img = 0.0
+    img = img / img.max()
+    img = img * 0.5
 
     cv2.imshow("darkSonic", img)
-    cv2.waitKey(0)
 
 ex23()
+
+#start test numpy part 2
+print("EXERCISES PART 2")
+
+def ex_1():
+    print("EX_1")
+    img = cv2.imread("images/sonic.jpg", 1)
+
+    ishape = img.shape
+    itype = img.dtype
+    idim = np.size(shape)
+
+    text = "Shape:" + ishape + "Type:" + itype + "Dimensions:" + idim 
+    img = cv2.putText()
+    cv2.imshow("TEXT", img)
+
+ex_1()
+
+def closeWin():
+    print("CLEARALL")
+   
+    key = cv2.waitKey(0)
+    if key == 27: #ESC
+        cv2.destroyAllWindows()
+
+closeWin()
