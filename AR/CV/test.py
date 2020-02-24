@@ -156,15 +156,14 @@ def ex16():
 
 ex16()
 
-#ex17 to ex23 about images see pdf:
-#"Intro to Image Processing in Virtual Campus"
-
 def ex17():
     print("EX_17")
     img = np.zeros((64, 64))
     grad = np.arange(0.0, 1.0, 1.0/64.0)
+    print(grad)
     img = img + grad
 
+    print(img)
     cv2.imshow("image17", img)
     cv2.waitKey(0)
 
@@ -191,3 +190,59 @@ def ex19():
     cv2.waitKey(0)
 
 ex19()
+
+def ex20():
+    print("EX_20")
+    img = 255 * np.ones((64, 64, 3), np.uint8())
+    img[:32, :32, 0] = 0.0
+    img[32:, 32:, 2] = 0.0
+
+    cv2.imshow("square", img)
+    cv2.waitKey(0)
+
+ex20()
+
+def ex21():
+    print("EX_21")
+    img = cv2.imread("images/sonic.jpg", 1)
+    img[::2, :, :] = 255/2
+
+    cv2.imshow("horScanSonic", img)
+    cv2.waitKey(0)
+
+ex21()
+
+def ex22():
+    print("EX_22")
+    img = cv2.imread("images/sonic.jpg", 1)
+    img[:, ::2, :] = 255/2
+
+    cv2.imshow("verScanSonic", img)
+    cv2.waitKey(0)
+
+ex22()
+
+def ex23():
+    print("EX_23")
+    img = cv2.imread("images/sonic.jpg", 1)
+    cv2.imshow("test", img)
+    cv2.waitKey(0)
+
+    img2 = np.float64(img)
+    cv2.imshow("float", img2)
+    cv2.waitKey(0)
+
+    cv2.normalize(img2, img)
+    cv2.imshow("normalized", img)
+    cv2.waitKey(0)
+    
+    mask = -255/2 * np.ones((276, 1, 3)) 
+    img = img + mask
+
+    if img.any() < 0.0: 
+        img = 0.0
+
+    cv2.imshow("darkSonic", img)
+    cv2.waitKey(0)
+
+ex23()
