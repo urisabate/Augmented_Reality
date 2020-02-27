@@ -238,21 +238,98 @@ print("EXERCISES PART 2")
 
 def ex_1():
     print("EX_1")
-    img = cv2.imread("images/sonic.jpg", 1)
+    img = cv2.imread("images/lena_noise.jpg", 1)
 
-    ishape = img.shape
-    itype = img.dtype
-    idim = np.size(shape)
+    ishape = 'Shape: ' + "{}".format(img.shape)
+    itype = 'Type: ' + "{}".format(img.dtype)
+    idim = 'Dimensions: ' + "{}".format(img.shape[2])
 
-    text = "Shape:" + ishape + "Type:" + itype + "Dimensions:" + idim 
-    img = cv2.putText()
+    black = (0, 0, 0)
+    fontscale = 0.5
+    thickness = 1
+
+    img = cv2.putText(img, ishape, (5, 20), cv2.FONT_HERSHEY_SIMPLEX, fontscale, black, thickness, cv2.LINE_AA)
+    img = cv2.putText(img, itype, (5, 40), cv2.FONT_HERSHEY_SIMPLEX, fontscale, black, thickness, cv2.LINE_AA)
+    img = cv2.putText(img, idim, (5, 60), cv2.FONT_HERSHEY_SIMPLEX, fontscale, black, thickness, cv2.LINE_AA)
+
     cv2.imshow("TEXT", img)
 
 ex_1()
 
+def ex_2():
+    print("EX_2")
+    img = cv2.imread("images/lena_noise.jpg", 1)
+
+    img = np.float64(img)
+    img = img / img.max()
+
+    print(img)
+
+    cv2.imshow("Floating IMG", img)
+
+ex_2()
+
+def ex_3():
+    print("EX_3")
+    img = cv2.imread("images/rice.jpg", 0)
+    (thresh, img) = cv2.threshold(img, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+
+    cv2.imshow('Binary Img', img)
+
+ex_3()
+
+# def ex_4():
+#     print("EX_4")
+#     img = cv2.imread("images/sonic.jpg", 1)
+#     rows, cols = img.shape
+
+#     kernX = cv2.getGaussianKernel(cols, 300)
+#     kernY = cv2.getGaussianKernel(rows, 300)
+#     kern = kernY*kernX.T
+#     vignMask = kern/kern.max()
+#     img = img * vignMask
+
+#     cv2.imshow("Vignette", img)
+
+# ex_4()
+
+def ex_5():
+    print("EX_5")
+    img = cv2.imread("images/sonic.jpg", 1)
+    img = ~img
+
+    cv2.imshow('Negative img', img)
+
+ex_5()
+
+def ex_6():
+    print("EX_6")
+    img = cv2.imread("images/sonic.jpg", 1)
+
+    img[:, :, 1] = img[:, :, 1]/2
+    img[:, :, 2] = img[:, :, 2]/2
+
+    cv2.imshow('BlueTint Img', img)
+
+ex_6()
+
+# def ex_7():
+#     print("EX_7")
+#     img = cv2.imread("images/sonic.jpg", 1)
+
+#     min = 50
+#     max = 200
+
+#     img = (img - min) / (max - min)
+#     img = (img / img.max()) * 255
+
+#     cv2.imshow('contrast', img)
+
+# ex_7()
+
 def closeWin():
     print("CLEARALL")
-   
+
     key = cv2.waitKey(0)
     if key == 27: #ESC
         cv2.destroyAllWindows()
