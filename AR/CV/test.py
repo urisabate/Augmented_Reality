@@ -160,10 +160,7 @@ def ex17():
     print("EX_17")
     img = np.zeros((64, 64))
     grad = np.arange(0.0, 1.0, 1.0/64.0)
-    print(grad)
     img = img + grad
-
-    print(img)
     cv2.imshow("image17", img)
 
 ex17()
@@ -263,8 +260,6 @@ def ex_2():
     img = np.float64(img)
     img = img / img.max()
 
-    print(img)
-
     cv2.imshow("Floating IMG", img)
 
 ex_2()
@@ -313,19 +308,15 @@ def ex_6():
 
 ex_6()
 
-# def ex_7():
-#     print("EX_7")
-#     img = cv2.imread("images/sonic.jpg", 1)
+def ex_7():
+    print("EX_7")
+    img = cv2.imread("images/sonic.jpg", 1)
+    cv2.imshow('original', img)
 
-#     min = 50
-#     max = 200
+    final_img = cv2.convertScaleAbs(img, alpha=1.35, beta=0.0)
+    cv2.imshow('contrast', final_img)
 
-#     img = (img - min) / (max - min)
-#     img = (img / img.max()) * 255
-
-#     cv2.imshow('contrast', img)
-
-# ex_7()
+ex_7()
 
 def closeWin():
     print("CLEARALL")
