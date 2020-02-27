@@ -273,20 +273,23 @@ def ex_3():
 
 ex_3()
 
-# def ex_4():
-#     print("EX_4")
-#     img = cv2.imread("images/sonic.jpg", 1)
-#     rows, cols = img.shape
+def ex_4():
+    print("EX_4")
+    img = cv2.imread("images/lena_noise.jpg", 1)
+    img2 = np.copy(img) * 0
+    rows, cols = img.shape[:2]
+    
+    kernX = cv2.getGaussianKernel(cols, 90)
+    kernY = cv2.getGaussianKernel(rows, 90)
+    kern = kernY*kernX.T
+    vignMask = kern/kern.max()
+    img2[:, :, 0] = img[:, :, 0] * vignMask
+    img2[:, :, 1] = img[:, :, 1] * vignMask
+    img2[:, :, 2] = img[:, :, 2] * vignMask
 
-#     kernX = cv2.getGaussianKernel(cols, 300)
-#     kernY = cv2.getGaussianKernel(rows, 300)
-#     kern = kernY*kernX.T
-#     vignMask = kern/kern.max()
-#     img = img * vignMask
+    cv2.imshow("Vignette", img2)
 
-#     cv2.imshow("Vignette", img)
-
-# ex_4()
+ex_4()
 
 def ex_5():
     print("EX_5")
@@ -311,7 +314,7 @@ ex_6()
 def ex_7():
     print("EX_7")
     img = cv2.imread("images/sonic.jpg", 1)
-    
+
     final_img = cv2.convertScaleAbs(img, alpha=1.35, beta=0.0)
     cv2.imshow('contrast', final_img)
 
