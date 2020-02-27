@@ -311,8 +311,7 @@ ex_6()
 def ex_7():
     print("EX_7")
     img = cv2.imread("images/sonic.jpg", 1)
-    cv2.imshow('original', img)
-
+    
     final_img = cv2.convertScaleAbs(img, alpha=1.35, beta=0.0)
     cv2.imshow('contrast', final_img)
 
