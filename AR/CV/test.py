@@ -278,7 +278,7 @@ def ex_4():
     img = cv2.imread("images/lena_noise.jpg", 1)
     img2 = np.copy(img) * 0
     rows, cols = img.shape[:2]
-    
+
     kernX = cv2.getGaussianKernel(cols, 90)
     kernY = cv2.getGaussianKernel(rows, 90)
     kern = kernY*kernX.T
@@ -315,7 +315,10 @@ def ex_7():
     print("EX_7")
     img = cv2.imread("images/sonic.jpg", 1)
 
-    final_img = cv2.convertScaleAbs(img, alpha=1.35, beta=0.0)
+    #Both two options works
+    final_img = cv2.addWeighted(img, 2.0, img, 0, 0)
+    #final_img = cv2.convertScaleAbs(img, alpha=1.35, beta=0.0)
+
     cv2.imshow('contrast', final_img)
 
 ex_7()
