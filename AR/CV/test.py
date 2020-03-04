@@ -323,6 +323,16 @@ def ex_7():
 
 ex_7()
 
+def bi_fi():
+    print("Bilateral Filter")
+    img = cv2.imread("images/lena_noise.jpg", 1)
+
+    final_img = cv2.bilateralFilter(img, 10, 100, 100)
+
+    cv2.imshow('bilateral', final_img)
+
+bi_fi()
+
 def closeWin():
     print("CLEARALL")
 
