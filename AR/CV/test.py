@@ -333,6 +333,15 @@ def bi_fi():
 
 bi_fi()
 
+def edge():
+    print("Edge Detection")
+    img = cv2.imread("images/sonic.jpg", 1)
+    edges = cv2.Canny(img, 195, 200)
+
+    cv2.imshow('Edge Detection', edges)
+
+edge()
+
 def closeWin():
     print("CLEARALL")
 
